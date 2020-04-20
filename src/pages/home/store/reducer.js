@@ -2,7 +2,6 @@ import * as actionTypes from './actionTypes'
 import { fromJS } from 'immutable'
 
 const defaultState = fromJS({
-	isHaveImg: true,
 	topicList: [{
 		id: 1,
 		title: '摄影',
@@ -20,9 +19,6 @@ export default (state = defaultState, action) => {
             return state.merge({
                 articleList: action.data,
 			})
-		case actionTypes.HAVE_IMG:
-			console.log(action)
-			return state.set('isHaveImg', false)
 		default:
 			return state
 	}

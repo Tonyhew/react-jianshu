@@ -8,10 +8,6 @@ const changeList = (data) => ({
 	data: fromJS(data),
 })
 
-export const isHaveImg = () => ({
-	type: actionTypes.HAVE_IMG
-})
-
 export const getList = () => {
 	return (dispatch) => {
 		axios.get('/api/data.json').then((res) => {

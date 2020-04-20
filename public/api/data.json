@@ -2,42 +2,47 @@
     "articleList": [
         {
             "id": 1,
+            "imgUrl": "",
             "title": "dddd",
             "desc": "《ddd》，村上春树的代表作。因它的名气特别响亮，特定网购了一本，放在书架上放好几个月了，最近才有时间打开阅读。 花了六天时间读完，基本上是...",
             "dimond": 36.9,
             "author": "MR_TS",
             "comment": 119,
-            "like": 733
+            "like": 733,
+            "isHaveImg": false
         },
         {
             "id": 2,
-            "imgUrl": "https://upload-images.jianshu.io/upload_images/15517692-7a1b517edb1eff6d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+            "imgUrl": "http://q92tiutoq.bkt.clouddn.com/15517692-7a1b517edb1eff6d.jpg",
             "title": "细读《挪威的森林111》",
             "desc": "《挪威的森林》，村上春树的代表作。因它的名气特别响亮，特定网购了一本，放在书架上放好几个月了，最近才有时间打开阅读。 花了六天时间读完，基本上是...",
             "dimond": 36.9,
             "author": "MR_TS",
             "comment": 119,
-            "like": 733
+            "like": 733,
+            "isHaveImg": true
         },
         {
             "id": 3,
-            "imgUrl": "https://upload-images.jianshu.io/upload_images/15517692-7a1b517edb1eff6d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+            "imgUrl": "http://q92tiutoq.bkt.clouddn.com/15517692-7a1b517edb1eff6d.jpg",
             "title": "细读《挪威的森林222》",
             "desc": "《挪威的森林》，村上春树的代表作。因它的名气特别响亮，特定网购了一本，放在书架上放好几个月了，最近才有时间打开阅读。 花了六天时间读完，基本上是...",
             "dimond": 36.9,
             "author": "MR_TS",
             "comment": 119,
-            "like": 733
+            "like": 733,
+            "isHaveImg": true
         },
         {
             "id": 4,
-            "imgUrl": "https://upload-images.jianshu.io/upload_images/15517692-7a1b517edb1eff6d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
+            "imgUrl": "http://q92tiutoq.bkt.clouddn.com/15517692-7a1b517edb1eff6d.jpg",
             "title": "细读《挪威的森林333》",
             "desc": "《挪威的森林》，村上春树的代表作。因它的名气特别响亮，特定网购了一本，放在书架上放好几个月了，最近才有时间打开阅读。 花了六天时间读完，基本上是...",
             "dimond": 36.9,
             "author": "MR_TS",
             "comment": 119,
-            "like": 733
+            "like": 733,
+            "isHaveImg": false
         }
     ]
 }
