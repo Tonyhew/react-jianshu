@@ -3,7 +3,7 @@ import { HomeWrapper, HomeDetailLeft, HomeDetailRight } from './style'
 import Topic from '../../components/home/Topic';
 import List from '../../components/home/List';
 import Author from '../../components/home/Author';
-
+import Recommend from '../../components/home/Recommend';
 
 class Home extends Component {
 
@@ -17,6 +17,7 @@ class Home extends Component {
 						<List />
 					</HomeDetailLeft>
 					<HomeDetailRight>
+						<Recommend />
 						<Author />
 					</HomeDetailRight>
 				</div>

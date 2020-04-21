@@ -10,6 +10,7 @@ export const HeaderWrapper = styled.div`
   left: 0;
   right: 0;
   top: 0;
+  z-index: 9;
 `;
 
 export const WidthLimit = styled.div`
@@ -143,6 +144,7 @@ export const SearchInfo = styled.div`
   box-sizing: border-box;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
   background: #fff;
+  z-index: 10;
   &::before {
     position: absolute;
     background-color: #fff;

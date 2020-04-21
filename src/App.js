@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { GlobalStyle } from './style.js'
 import { Iconfont } from './static/iconfont/iconfont'
 import Header from './components/header/Header'
-import Home from './pages/home/'
+import Home from './pages/home/Home'
 import Detail from './pages/detail/'
 
 
