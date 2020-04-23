@@ -5,10 +5,10 @@ export const HomeWrapper = styled.div`
 	margin: 0 auto;
 	box-sizing: border-box;
 	.row {
-			overflow: hidden;
+		overflow: hidden;
 	}
 	.banner-img {
-			width: 100%;
+		width: 100%;
 	}
 `
 
@@ -137,6 +137,10 @@ export const RecommendList = styled.div`
 export const RecommendListItem = styled.a`
 	display: block;
 	border-radius: 4px;
+	margin-top: 5px;
+	&:first-child {
+		margin-top: 0;
+	}
 	img {
 		width: 100%;
 		height: 100%;

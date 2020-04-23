@@ -1,1 +1,2 @@
 export const CHANGE_LIST = 'home/CHANGE_LIST';
+export const CHANGE_RECOMMEND_LIST = 'home/CHANGE_RECOMMEND_LIST';

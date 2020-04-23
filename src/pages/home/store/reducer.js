@@ -12,13 +12,19 @@ const defaultState = fromJS({
 		title: '故事',
 		imgUrl: 'https://upload.jianshu.io/collections/images/95/1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64'
 	}],
-	articleList: []
+	articleList: [],
+	recommendList: []
 })
 export default (state = defaultState, action) => {
+	console.log(action)
 	switch (action.type) {
 		case actionTypes.CHANGE_LIST:
-            return state.merge({
-                articleList: action.data,
+			return state.merge({
+				articleList: action.data,
+			})
+		case actionTypes.CHANGE_RECOMMEND_LIST:
+			return state.merge({
+				recommendList: action.data,
 			})
 		default:
 			return state
