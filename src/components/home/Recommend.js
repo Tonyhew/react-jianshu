@@ -6,7 +6,8 @@ import {
 	RecommendList,
 	RecommendListItem,
 	RecommendQR,
-	RecommendQRInfo
+	RecommendQRInfo,
+	RecommendQRHover
 } from '../../pages/home/style'
 
 class Recommend extends Component {
@@ -16,8 +17,20 @@ class Recommend extends Component {
 		getRecommendList()
 	}
 
+	hoverQR() {
+		const { QRShow } = this.props
+		if (QRShow) {
+			return (
+				<RecommendQRHover>
+					<div className="arrow"></div>
+					<img src="http://q92tiutoq.bkt.clouddn.com/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf%20%281%29.png" alt="" />
+				</RecommendQRHover>
+			)
+		}
+	}
+
 	render() {
-		const { recommendList } = this.props
+		const { recommendList, handleMouseEnter, handleMouseLeave } = this.props
 		const newRecommendList = recommendList.toJS()
 		return (
 			<Fragment>
@@ -34,27 +47,41 @@ class Recommend extends Component {
 						}
 					</RecommendList>
 
-					<RecommendQR>
+
+					<RecommendQR
+						onMouseEnter={handleMouseEnter}
+						onMouseLeave={handleMouseLeave}
+					>
 						<img src='http://q92tiutoq.bkt.clouddn.com/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf%20%281%29.png' alt='' />
 						<RecommendQRInfo>
 							<p>下载简书手机App ></p>
 							<p>随时随地发现和创作内容</p>
 						</RecommendQRInfo>
 					</RecommendQR>
+
+					{this.hoverQR()}
+
 				</RecommendWrapper>
-			</Fragment>
+			</Fragment >
 		)
 	}
 }
 
 const mapStateToProps = (state) => ({
-	recommendList: state.getIn(['home', 'recommendList'])
+	recommendList: state.getIn(['home', 'recommendList']),
+	QRShow: state.getIn(['home', 'QRShow'])
 })
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getRecommendList() {
 			dispatch(actionCreators.getRecommendList())
+		},
+		handleMouseEnter() {
+			dispatch(actionCreators.handleMouseEnter())
+		},
+		handleMouseLeave() {
+			dispatch(actionCreators.handleMouseLeave())
 		}
 	}
 }

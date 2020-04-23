@@ -16,7 +16,6 @@ const defaultState = fromJS({
 	recommendList: []
 })
 export default (state = defaultState, action) => {
-	console.log(action)
 	switch (action.type) {
 		case actionTypes.CHANGE_LIST:
 			return state.merge({
@@ -26,6 +25,10 @@ export default (state = defaultState, action) => {
 			return state.merge({
 				recommendList: action.data,
 			})
+		case actionTypes.HANDLE_MOUSE_ENTER:
+			return state.set('QRShow', true)
+		case actionTypes.HANDLE_MOUSE_LEAVE:
+			return state.set('QRShow', false)	
 		default:
 			return state
 	}

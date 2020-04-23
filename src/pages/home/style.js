@@ -129,6 +129,7 @@ export const ListActionInfo = styled.div`
 export const RecommendWrapper = styled.div`
 	width: 100%;
 	min-height: 50px;
+	position: relative;
 `
 
 export const RecommendList = styled.div`
@@ -178,4 +179,50 @@ export const RecommendQRInfo = styled.div`
     font-size: 13px;
     color: #999;
 	}
+`
+export const RecommendQRHover = styled.div`
+	  position: absolute;
+		top: 40px;
+    left: 50px;
+		right: 50px;
+    max-width: 276px;
+    padding: 1px;
+		box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		.arrow {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+			border-width: 11px;
+			left: 50%;
+			margin-left: -11px;
+			border-bottom-width: 0;
+			border-top-color: #999;
+			border-top-color: #fff;
+			bottom: -11px;
+			&::after {
+				content: " ";
+				bottom: 1px;
+				margin-left: -10px;
+				border-bottom-width: 0;
+				border-top-color: #fff;
+				position: absolute;
+				display: block;
+				width: 0;
+				height: 0;
+				border-color: transparent;
+				border-style: solid;
+			}
+		}
+		img {
+			width: 100%;
+			padding: 10px;
+			box-sizing: border-box;
+		}
 `
