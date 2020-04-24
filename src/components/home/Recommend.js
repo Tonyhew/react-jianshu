@@ -17,20 +17,8 @@ class Recommend extends Component {
 		getRecommendList()
 	}
 
-	hoverQR() {
-		const { QRShow } = this.props
-		if (QRShow) {
-			return (
-				<RecommendQRHover>
-					<div className="arrow"></div>
-					<img src="http://q92tiutoq.bkt.clouddn.com/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf%20%281%29.png" alt="" />
-				</RecommendQRHover>
-			)
-		}
-	}
-
 	render() {
-		const { recommendList, handleMouseEnter, handleMouseLeave } = this.props
+		const { recommendList, handleMouseEnter, handleMouseLeave, QRShow } = this.props
 		const newRecommendList = recommendList.toJS()
 		return (
 			<Fragment>
@@ -59,7 +47,10 @@ class Recommend extends Component {
 						</RecommendQRInfo>
 					</RecommendQR>
 
-					{this.hoverQR()}
+					<RecommendQRHover className={QRShow ? "fade in" : "hide"}>
+						<div className="arrow"></div>
+						<img src="http://q92tiutoq.bkt.clouddn.com/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf%20%281%29.png" alt="" />
+					</RecommendQRHover>
 
 				</RecommendWrapper>
 			</Fragment >

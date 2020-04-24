@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeWrapper = styled.div`
+export const HomeWrapper = styled.div `
 	width: 960px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -12,26 +12,26 @@ export const HomeWrapper = styled.div`
 	}
 `
 
-export const HomeDetailLeft = styled.div`
+export const HomeDetailLeft = styled.div `
 	float: left;
 	width: 66.6%;
 	padding-top: 30px;
 	padding-right: 0;
 
 `
-export const HomeDetailRight = styled.div`
+export const HomeDetailRight = styled.div `
 	float: left;
 	width: 29.4%;
 	padding: 30px 0 0;
 	margin-left: 4%;
 `
-export const TopicWrapper = styled.div`
+export const TopicWrapper = styled.div `
 	overflow: hidden;
 	padding: 20px 0 10px 0;
 	margin-left: -18px;
 `
 
-export const TopicListItem = styled.div`
+export const TopicListItem = styled.div `
 	float: left;
 	height: 32px;
 	line-height: 32px;
@@ -52,7 +52,7 @@ export const TopicListItem = styled.div`
 	}
 `
 
-export const MoreToLink = styled.a`
+export const MoreToLink = styled.a `
 	font-size: 14px;
 	vertical-align: middle;
 	text-align: center;
@@ -62,7 +62,7 @@ export const MoreToLink = styled.a`
 	margin: 0 15px;
 `
 
-export const ListItem = styled.div`
+export const ListItem = styled.div `
 	position: relative;
 	width: 100%;
 	margin: 0 0 15px;
@@ -75,7 +75,7 @@ export const ListItem = styled.div`
 	}
 `
 
-export const ListImgLink = styled.a`
+export const ListImgLink = styled.a `
 	position: absolute;
 	top: 50%;
 	right: 0;
@@ -90,7 +90,7 @@ export const ListImgLink = styled.a`
 	}
 `
 
-export const ListInfo = styled.div`
+export const ListInfo = styled.div `
 	.list_title {
 			margin: -7px 0 4px;
 			display: inherit;
@@ -105,7 +105,7 @@ export const ListInfo = styled.div`
 			color: #999;
 	}
 `
-export const ListActionInfo = styled.div`
+export const ListActionInfo = styled.div `
 	padding: 0;
 	font-size: 12px;
 	line-height: 20px;
@@ -126,16 +126,16 @@ export const ListActionInfo = styled.div`
 	}
 `
 
-export const RecommendWrapper = styled.div`
+export const RecommendWrapper = styled.div `
 	width: 100%;
 	min-height: 50px;
 	position: relative;
 `
 
-export const RecommendList = styled.div`
+export const RecommendList = styled.div `
 	height: 100%;
 `
-export const RecommendListItem = styled.a`
+export const RecommendListItem = styled.a `
 	display: block;
 	border-radius: 4px;
 	margin-top: 5px;
@@ -148,7 +148,7 @@ export const RecommendListItem = styled.a`
 	}
 `
 
-export const RecommendQR = styled.a`
+export const RecommendQR = styled.a `
 	display: block;
 	box-sizing: border-box;
 	margin: 10px 0 20px 0;
@@ -165,7 +165,7 @@ export const RecommendQR = styled.a`
 	}
 `
 
-export const RecommendQRInfo = styled.div`
+export const RecommendQRInfo = styled.div `
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: 4px;
@@ -180,7 +180,7 @@ export const RecommendQRInfo = styled.div`
     color: #999;
 	}
 `
-export const RecommendQRHover = styled.div`
+export const RecommendQRHover = styled.div `
 	  position: absolute;
 		top: 40px;
     left: 50px;
@@ -192,6 +192,17 @@ export const RecommendQRHover = styled.div`
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
+		transition: all .15s linear;
+		&.fade {
+			opacity: 0;
+		}
+		&.fade.in {
+			opacity: 1;
+		}
+		&.hide {
+			opacity: 0;
+			transition: all .15s linear;
+		}
 		.arrow {
 			position: absolute;
 			display: block;

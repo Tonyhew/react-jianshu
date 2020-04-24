@@ -44,7 +44,7 @@ class Header extends Component {
           <SearchInfoTitle>
             热门搜索
             <SearchInfoSwitch onClick={() => { handleChangeList(page, totalPage, this.spinIcon) }}>
-              <i ref={(icon) => {this.spinIcon = icon}} className='iconfont change_search_list'>&#xe851;</i>
+              <i ref={(icon) => { this.spinIcon = icon }} className='iconfont change_search_list'>&#xe851;</i>
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
@@ -138,7 +138,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleChangeList(page, totalPage, spin) {
       let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
-      if(originAngle) {
+      if (originAngle) {
         originAngle = parseInt(originAngle, 10)
       } else {
         originAngle = 0
