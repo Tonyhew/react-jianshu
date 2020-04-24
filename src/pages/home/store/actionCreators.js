@@ -34,7 +34,7 @@ export const getList = () => {
 
 export const getRecommendList = () => {
 	return (dispatch) => {
-		axios.get('/api/data.json').then((res) => {
+		axios.get('/api/homeList.json').then((res) => {
 			const data = res.data
 			dispatch(changeRecommendList(data.recommendList))
 		}).catch(() => {

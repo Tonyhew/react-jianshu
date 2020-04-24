@@ -88,6 +88,9 @@ export const ListImgLink = styled.a `
 		border-radius: 4px;
 		border: 1px solid #f0f0f0;
 	}
+	.img_hide {
+		display: none;
+	}
 `
 
 export const ListInfo = styled.div `

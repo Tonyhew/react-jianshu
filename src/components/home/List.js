@@ -15,15 +15,13 @@ class List extends Component {
 		for (let i = 0; i < newList.length; i++) {
 			if (newList[i].imgUrl === "" || newList[i].imgUrl === null) {
 				newList[i].isHaveImg = false
-			}  else if (newList[i].imgUrl !== "") {
-				newList[i].isHaveImg = true
 			}
 		}
 		return (
 			newList.map((item) => (
 				<ListItem key={item.id} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
 					<ListImgLink className="img_right">
-						<img src={item.imgUrl} alt="" className="list_img" />
+						<img src={item.imgUrl} alt="" className={item.imgUrl==="" ? 'img_hide' : 'list_img'} />
 					</ListImgLink>
 					<ListInfo>
 						<h3 className='list_title'>{item.title}</h3>
