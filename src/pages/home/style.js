@@ -31,7 +31,7 @@ export const TopicWrapper = styled.div `
 	margin-left: -18px;
 `
 
-export const TopicListItem = styled.div `
+export const TopicListItem = styled.a `
 	float: left;
 	height: 32px;
 	line-height: 32px;

@@ -96,7 +96,7 @@ class Header extends Component {
             <Button className='writing'>
               <i className='iconfont'>&#xe624;</i>
                 写文章
-              </Button>
+            </Button>
             <Button className='reg'>注册</Button>
             <ButtonLogin className='login'>登录</ButtonLogin>
             <ButtonLogin className='style'>

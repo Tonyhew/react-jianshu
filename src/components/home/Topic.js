@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { actionCreators } from '../../pages/home/store'
 import { TopicWrapper, TopicListItem, MoreToLink } from '../../pages/home/style';
 import { connect } from 'react-redux';
 
 class Topic extends Component {
+	componentDidMount() {
+		const { getTopicList } = this.props
+		getTopicList()
+	}
+
 	render() {
 		const { list } = this.props
 		return (
@@ -10,11 +16,11 @@ class Topic extends Component {
 				{
 					list.map((item) => {
 						return (
-							<TopicListItem key={item.get('id')}>
+							<TopicListItem href='#' key={item.get('id')}>
 								<img
 									className="topic_img"
 									src={item.get('imgUrl')}
-									alt=""
+									alt="64"
 								/>
 								{item.get('title')}
 							</TopicListItem>
@@ -34,4 +40,12 @@ const mapState = (state) => ({
 	list: state.getIn(['home', 'topicList'])
 })
 
-export default connect(mapState, null)(Topic)
+const mapDispatch = (dispatch) => {
+	return {
+		getTopicList() {
+			dispatch(actionCreators.getTopicList())
+		}
+	}
+}
+
+export default connect(mapState, mapDispatch)(Topic)
