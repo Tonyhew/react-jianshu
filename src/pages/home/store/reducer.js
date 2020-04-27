@@ -5,7 +5,10 @@ const defaultState = fromJS({
 	QRShow: false,
 	topicList: [],
 	articleList: [],
-	recommendList: []
+	recommendList: [],
+	authorList: [],
+	page: 1,
+	totalPage: 1
 })
 export default (state = defaultState, action) => {
 	switch (action.type) {
@@ -21,10 +24,17 @@ export default (state = defaultState, action) => {
 			return state.merge({
 				recommendList: action.data,
 			})
+		case actionTypes.CHANGE_AUTHOR_LIST:
+			return state.merge({
+				authorList: action.data,
+				totalPage: action.totalPage
+			})
 		case actionTypes.HANDLE_MOUSE_ENTER:
 			return state.set('QRShow', true)
 		case actionTypes.HANDLE_MOUSE_LEAVE:
-			return state.set('QRShow', false)	
+			return state.set('QRShow', false)
+		case actionTypes.CHANGE_PAGE:
+			return state.set('page', action.page)
 		default:
 			return state
 	}

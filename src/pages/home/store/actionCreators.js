@@ -17,6 +17,17 @@ const changeRecommendList = (data) => ({
 	data: fromJS(data),
 })
 
+const changeAuthorList = (data) => ({
+	type: actionTypes.CHANGE_AUTHOR_LIST,
+	data: fromJS(data),
+	totalPage: Math.ceil(data.length / 5)
+})
+
+export const changePage = (page) => ({
+  type: actionTypes.CHANGE_PAGE,
+  page
+})
+
 export const handleMouseEnter = () => ({
 	type: actionTypes.HANDLE_MOUSE_ENTER,
 })
@@ -58,7 +69,16 @@ export const getRecommendList = () => {
 	}
 }
 
-
+export const getAuthorList = () => {
+	return (dispatch) => {
+		axios.get('/api/homeList.json').then((res) => {
+			const data = res.data
+			dispatch(changeAuthorList(data.authorList))
+		}).catch(() => {
+			console.log('error')
+		})
+	}
+}
 
 
 

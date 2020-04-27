@@ -240,3 +240,73 @@ export const RecommendQRHover = styled.div`
 			box-sizing: border-box;
 		}
 `
+export const AuthorWrapper = styled.div`
+	box-sizing: border-box;
+`
+
+export const AuthorTitle = styled.div`
+	margin-top: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #969696;
+`
+
+export const AuthorSwitch = styled.span`
+	float: right;
+  font-size: 13px;
+  .change_search_list {
+    position: static;
+    display: block;
+    float: left;
+		margin: 0 4px;
+    font-size: 12px;
+    transition: all .3s ease-in;
+    transform-origin: center center;
+  }
+`
+
+export const AuthorList = styled.ul`
+	margin: 0 0 20px;
+  text-align: left;
+  list-style: none;
+`
+
+export const AuthorListItem = styled.li`
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+	margin-top: 15px;
+	p {
+		margin-top: 10px;
+    font-size: 12px;
+    color: #969696;
+	}
+`
+
+export const Avatar = styled.a`
+	float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+	img {
+		width: 100%;
+		height: 100%;
+		border: 1px solid #ddd;
+		border-radius: 50%;
+	}
+`
+
+export const UserName = styled.a`
+  padding-top: 5px;
+  margin-right: 60px;
+  font-size: 14px;
+  display: block;
+`
+
+export const Follow = styled.a`
+	float: right;
+  margin-top: 5px;
+  padding: 0;
+  font-size: 13px;
+  color: #42c02e;
+`
