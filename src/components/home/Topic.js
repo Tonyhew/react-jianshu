@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { actionCreators } from '../../pages/home/store'
 import { TopicWrapper, TopicListItem, MoreToLink } from '../../pages/home/style';
 import { connect } from 'react-redux';
 
-class Topic extends Component {
+class Topic extends PureComponent {
 	componentDidMount() {
 		const { getTopicList } = this.props
 		getTopicList()

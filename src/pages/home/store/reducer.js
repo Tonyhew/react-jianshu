@@ -29,6 +29,10 @@ export default (state = defaultState, action) => {
 				authorList: action.data,
 				totalPage: action.totalPage
 			})
+		case actionTypes.CHANGE_FOLLOW:
+			const newState = JSON.parse(JSON.stringify(state.toJS()));
+			newState.authorList[action.index].isFollow = action.isFollow;
+			return fromJS(newState);
 		case actionTypes.HANDLE_MOUSE_ENTER:
 			return state.set('QRShow', true)
 		case actionTypes.HANDLE_MOUSE_LEAVE:

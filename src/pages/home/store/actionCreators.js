@@ -36,6 +36,12 @@ export const handleMouseLeave = () => ({
 	type: actionTypes.HANDLE_MOUSE_LEAVE,
 })
 
+export const handleChangeFollow = (isFollow, index) => ({
+	type: actionTypes.CHANGE_FOLLOW,
+	isFollow,
+	index
+})
+
 export const getTopicList = () => {
 	return (dispatch) => {
 		axios.get('api/homeList.json').then((res) => {

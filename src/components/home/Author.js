@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../pages/home/store'
 import {
@@ -21,7 +21,7 @@ function makeFriendly(num) {
 	return intlFormat(num);
 }
 
-class Author extends Component {
+class Author extends PureComponent {
 
 	componentDidMount() {
 		const { getAuthorList } = this.props
@@ -29,19 +29,22 @@ class Author extends Component {
 	}
 
 	getAuthorArea() {
-		const { authorList, page, totalPage, handleChangeList } = this.props;
+		const { authorList, page, totalPage, handleChangeList, handleChangeFollow } = this.props;
 		const newList = authorList.toJS()
 		const pageList = []
 
 		if (newList.length) {
 			for (let i = (page - 1) * 5; i < page * 5; i++) {
+
 				pageList.push(
 					<AuthorListItem key={newList[i].id}>
 						<Avatar>
 							<img src={newList[i].avatarUrl} alt="" />
 						</Avatar>
-						<Follow >
-							+关注
+						<Follow className={newList[i].isFollow ? 'active' : ''} onClick={() => { handleChangeFollow(newList[i].isFollow, i) }}>
+							{/*{newList[i].attention?"已关注":"+关注"}*/}
+							{newList[i].isFollow ? <div className="content">已关注</div> : <div className="content">+关注</div>}
+							{newList[i].isFollow ? <div className="cancel">取消关注</div> : null}
 						</Follow>
 						<UserName>
 							{newList[i].userName}
@@ -104,6 +107,9 @@ const mapDispatch = (dispatch) => {
 			} else {
 				dispatch(actionCreators.changePage(1))
 			}
+		},
+		handleChangeFollow(isFollow, index) {
+			dispatch(actionCreators.handleChangeFollow(!isFollow, index))
 		}
 	}
 }

@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { ListItem, ListInfo, ListActionInfo, ListImgLink } from '../../pages/home/style';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../pages/home/store'
 
-class List extends Component {
+class List extends PureComponent {
 	componentDidMount() {
 		const { getHomeList } = this.props
 		getHomeList()

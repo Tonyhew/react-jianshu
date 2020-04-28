@@ -309,4 +309,27 @@ export const Follow = styled.a`
   padding: 0;
   font-size: 13px;
   color: #42c02e;
+	&.active{
+		color: #969696;
+		:hover{
+			.cancel{
+				display: block;
+				.iconfont{
+						margin-right:-6px;
+				}
+			}
+			.content{
+				display: none;
+			}
+		}
+  }
+	.content{
+		display: block;
+	}
+	.cancel{
+		display: none;
+		position: relative;
+		right: 0;
+		top: 0;
+	}
 `
