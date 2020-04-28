@@ -1,14 +1,8 @@
 import React, { PureComponent } from 'react';
-import { actionCreators } from '../../pages/home/store'
 import { TopicWrapper, TopicListItem, MoreToLink } from '../../pages/home/style';
 import { connect } from 'react-redux';
 
 class Topic extends PureComponent {
-	componentDidMount() {
-		const { getTopicList } = this.props
-		getTopicList()
-	}
-
 	render() {
 		const { list } = this.props
 		return (
@@ -40,12 +34,4 @@ const mapState = (state) => ({
 	list: state.getIn(['home', 'topicList'])
 })
 
-const mapDispatch = (dispatch) => {
-	return {
-		getTopicList() {
-			dispatch(actionCreators.getTopicList())
-		}
-	}
-}
-
-export default connect(mapState, mapDispatch)(Topic)
+export default connect(mapState, null)(Topic)

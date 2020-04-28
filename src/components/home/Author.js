@@ -23,11 +23,6 @@ function makeFriendly(num) {
 
 class Author extends PureComponent {
 
-	componentDidMount() {
-		const { getAuthorList } = this.props
-		getAuthorList()
-	}
-
 	getAuthorArea() {
 		const { authorList, page, totalPage, handleChangeList, handleChangeFollow } = this.props;
 		const newList = authorList.toJS()
@@ -90,9 +85,6 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => {
 	return {
-		getAuthorList() {
-			dispatch(actionCreators.getAuthorList())
-		},
 		handleChangeList(page, totalPage, spin) {
 			let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
 			if (originAngle) {

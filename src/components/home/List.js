@@ -1,13 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { ListItem, ListInfo, ListActionInfo, ListImgLink } from '../../pages/home/style';
 import { connect } from 'react-redux';
-import { actionCreators } from '../../pages/home/store'
 
 class List extends PureComponent {
-	componentDidMount() {
-		const { getHomeList } = this.props
-		getHomeList()
-	}
 
 	getListArea() {
 		const { list } = this.props
@@ -62,12 +57,4 @@ const mapState = (state) => ({
 	list: state.getIn(['home', 'articleList']),
 })
 
-const mapDispatch = (dispatch) => {
-	return {
-		getHomeList() {
-			dispatch(actionCreators.getList())
-		},
-	}
-}
-
-export default connect(mapState, mapDispatch)(List)
+export default connect(mapState, null)(List)

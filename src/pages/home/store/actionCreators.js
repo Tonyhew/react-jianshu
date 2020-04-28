@@ -1,26 +1,13 @@
 import * as actionTypes from './actionTypes';
-import { fromJS } from 'immutable'
 import axios from 'axios';
 
-const changeTopicList = (data) => ({
-	type: actionTypes.CHANGE_TOPIC_LIST,
-	data: fromJS(data)
-})
-
-const changeList = (data) => ({
-	type: actionTypes.CHANGE_LIST,
-	data: fromJS(data),
-})
-
-const changeRecommendList = (data) => ({
-	type: actionTypes.CHANGE_RECOMMEND_LIST,
-	data: fromJS(data),
-})
-
-const changeAuthorList = (data) => ({
-	type: actionTypes.CHANGE_AUTHOR_LIST,
-	data: fromJS(data),
-	totalPage: Math.ceil(data.length / 5)
+const changeHomeData = (result) => ({
+	type: actionTypes.CHANGE_HOME_DATA,
+	articleList: result.articleList,
+	topicList: result.topicList,
+	recommendList: result.recommendList,
+	authorList: result.authorList,
+	totalPage: Math.ceil(result.authorList.length / 5)
 })
 
 export const changePage = (page) => ({
@@ -42,50 +29,14 @@ export const handleChangeFollow = (isFollow, index) => ({
 	index
 })
 
-export const getTopicList = () => {
-	return (dispatch) => {
-		axios.get('api/homeList.json').then((res) => {
-			const data = res.data
-			dispatch(changeTopicList(data.topicList))
-		}).catch(() => {
-			console.log('error')
-		})
-	}
-}
-
-export const getList = () => {
+export const getHomeData = () => {
 	return (dispatch) => {
 		axios.get('/api/homeList.json').then((res) => {
-			const data = res.data
-			dispatch(changeList(data.articleList))
-		}).catch(() => {
-			console.log('error')
-		})
-	}
+				const result = res.data;
+				dispatch(changeHomeData(result));
+		});
+	}	
 }
-
-export const getRecommendList = () => {
-	return (dispatch) => {
-		axios.get('/api/homeList.json').then((res) => {
-			const data = res.data
-			dispatch(changeRecommendList(data.recommendList))
-		}).catch(() => {
-			console.log('error')
-		})
-	}
-}
-
-export const getAuthorList = () => {
-	return (dispatch) => {
-		axios.get('/api/homeList.json').then((res) => {
-			const data = res.data
-			dispatch(changeAuthorList(data.authorList))
-		}).catch(() => {
-			console.log('error')
-		})
-	}
-}
-
 
 
 

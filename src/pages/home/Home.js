@@ -1,11 +1,18 @@
 import React, { PureComponent } from 'react';
-import { HomeWrapper, HomeDetailLeft, HomeDetailRight } from './style'
+import { HomeWrapper, HomeDetailLeft, HomeDetailRight } from './style';
+import { connect } from 'react-redux';
 import Topic from '../../components/home/Topic';
 import List from '../../components/home/List';
 import Author from '../../components/home/Author';
 import Recommend from '../../components/home/Recommend';
+import { actionCreators } from './store';
 
 class Home extends PureComponent {
+
+	componentDidMount() {
+		const { changeHomeData } = this.props
+		changeHomeData()
+	}
 
 	render() {
 		return (
@@ -29,4 +36,10 @@ class Home extends PureComponent {
 
 }
 
-export default Home
+const mapDispatch = (dispatch) => ({
+	changeHomeData() {
+		dispatch(actionCreators.getHomeData())
+	}
+})
+
+export default connect(null, mapDispatch)(Home)

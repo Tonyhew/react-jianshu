@@ -12,11 +12,6 @@ import {
 
 class Recommend extends PureComponent {
 
-	componentDidMount() {
-		const { getRecommendList } = this.props
-		getRecommendList()
-	}
-
 	render() {
 		const { recommendList, handleMouseEnter, handleMouseLeave, QRShow } = this.props
 		const newRecommendList = recommendList.toJS()
@@ -65,9 +60,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getRecommendList() {
-			dispatch(actionCreators.getRecommendList())
-		},
 		handleMouseEnter() {
 			dispatch(actionCreators.handleMouseEnter())
 		},

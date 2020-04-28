@@ -12,22 +12,13 @@ const defaultState = fromJS({
 })
 export default (state = defaultState, action) => {
 	switch (action.type) {
-		case actionTypes.CHANGE_TOPIC_LIST:
+		case actionTypes.CHANGE_HOME_DATA:
 			return state.merge({
-				topicList: action.data
-			})
-		case actionTypes.CHANGE_LIST:
-			return state.merge({
-				articleList: action.data,
-			})
-		case actionTypes.CHANGE_RECOMMEND_LIST:
-			return state.merge({
-				recommendList: action.data,
-			})
-		case actionTypes.CHANGE_AUTHOR_LIST:
-			return state.merge({
-				authorList: action.data,
-				totalPage: action.totalPage
+				topicList: fromJS(action.topicList),
+				articleList: fromJS(action.articleList),
+				recommendList: fromJS(action.recommendList),
+				authorList: fromJS(action.authorList),
+				totalPage: fromJS(action.totalPage)
 			})
 		case actionTypes.CHANGE_FOLLOW:
 			const newState = JSON.parse(JSON.stringify(state.toJS()));
