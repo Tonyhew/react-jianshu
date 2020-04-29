@@ -8,7 +8,9 @@ const defaultState = fromJS({
 	recommendList: [],
 	authorList: [],
 	page: 1,
-	totalPage: 1
+	totalPage: 1,
+	articlePage: 1,
+	scrollShow: false
 })
 export default (state = defaultState, action) => {
 	switch (action.type) {
@@ -24,6 +26,13 @@ export default (state = defaultState, action) => {
 			const newState = JSON.parse(JSON.stringify(state.toJS()));
 			newState.authorList[action.index].isFollow = action.isFollow;
 			return fromJS(newState);
+		case actionTypes.CHANGE_ADD_ARTICLE:
+			return state.merge({
+				articleList: state.get('articleList').concat(action.list),
+				articlePage: action.nextPage
+			})
+		case actionTypes.CHANGE_SCROLL_SHOW:
+			return state.set('scrollShow', action.flag)
 		case actionTypes.HANDLE_MOUSE_ENTER:
 			return state.set('QRShow', true)
 		case actionTypes.HANDLE_MOUSE_LEAVE:

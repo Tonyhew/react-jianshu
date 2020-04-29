@@ -2,4 +2,6 @@ export const CHANGE_HOME_DATA = 'home/CHANGE_HOME_DATA';
 export const HANDLE_MOUSE_ENTER = 'home/HANDLE_MOUSE_ENTER';
 export const HANDLE_MOUSE_LEAVE = 'home/HANDLE_MOUSE_LEAVE';
 export const CHANGE_PAGE = 'home/CHANGE_PAGE';
-export const CHANGE_FOLLOW = 'home/CHANGE_FOLLOW'
+export const CHANGE_FOLLOW = 'home/CHANGE_FOLLOW';
+export const CHANGE_ADD_ARTICLE = 'home/CHANGE_ADD_ARTICLE';
+export const CHANGE_SCROLL_SHOW = 'home/CHANGE_SCROLL_SHOW';

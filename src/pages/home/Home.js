@@ -6,15 +6,34 @@ import List from '../../components/home/List';
 import Author from '../../components/home/Author';
 import Recommend from '../../components/home/Recommend';
 import { actionCreators } from './store';
+import { BackTop } from './style'
 
 class Home extends PureComponent {
 
 	componentDidMount() {
 		const { changeHomeData } = this.props
 		changeHomeData()
+		this.bindScroll()
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.props.changeScrollShow)	
+	}
+
+	backTop() {
+		window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth',
+    });
+	}
+
+	bindScroll() {
+		window.addEventListener('scroll', this.props.changeScrollShow)
 	}
 
 	render() {
+		const { scrollShow } = this.props
 		return (
 			<HomeWrapper>
 				<div className='row'>
@@ -30,16 +49,28 @@ class Home extends PureComponent {
 						<Author />
 					</HomeDetailRight>
 				</div>
+				{scrollShow ? <BackTop onClick={this.backTop}><i className="iconfont">&#xe699;</i></BackTop> : null}
 			</HomeWrapper>
 		)
 	}
 
 }
 
+const mapState = (state) => ({
+	scrollShow: state.getIn(['home', 'scrollShow'])
+})
+
 const mapDispatch = (dispatch) => ({
 	changeHomeData() {
 		dispatch(actionCreators.getHomeData())
+	},
+	changeScrollShow() {
+		if (document.documentElement.scrollTop > 200) {
+			dispatch(actionCreators.changeScroll(true))
+		} else {
+			dispatch(actionCreators.changeScroll(false))
+		}
 	}
 })
 
-export default connect(null, mapDispatch)(Home)
+export default connect(mapState, mapDispatch)(Home)

@@ -315,7 +315,8 @@ export const Follow = styled.a`
 			.cancel{
 				display: block;
 				.iconfont{
-						margin-right:-6px;
+						margin-right: 2px;
+						font-size: 13px;
 				}
 			}
 			.content{
@@ -325,11 +326,57 @@ export const Follow = styled.a`
   }
 	.content{
 		display: block;
+		i {
+			font-size: 13px;
+			margin-right: 5px;
+		}
 	}
 	.cancel{
 		display: none;
 		position: relative;
 		right: 0;
 		top: 0;
+	}
+`
+
+export const LoadMore = styled.div`
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background: #a5a5a5;
+	margin: 30px 0;
+	border-radius: 20px;
+	cursor: pointer;
+	&:hover {
+		opacity: .8;
+	}
+`
+
+export const AuthorMore = styled.a`
+	display: inline-block;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #f7f7f7;
+	border: 1px solid #dcdcdc;
+  border-radius: 4px;
+	font-size: 13px;
+  color: #787878;
+`
+
+export const BackTop = styled.div`
+	position: fixed;
+	right: 100px;
+	bottom: 100px;
+	border: 1px solid #ccc;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	&:hover {
+		opacity: .5
 	}
 `

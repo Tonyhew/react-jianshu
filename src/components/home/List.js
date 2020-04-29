@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
-import { ListItem, ListInfo, ListActionInfo, ListImgLink } from '../../pages/home/style';
+import { ListItem, ListInfo, ListActionInfo, ListImgLink, LoadMore } from '../../pages/home/style';
+import { actionCreators } from '../../pages/home/store'
 import { connect } from 'react-redux';
 
 class List extends PureComponent {
@@ -13,10 +14,10 @@ class List extends PureComponent {
 			}
 		}
 		return (
-			newList.map((item) => (
-				<ListItem key={item.id} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
+			newList.map((item, index) => (
+				<ListItem key={index} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
 					<ListImgLink className="img_right">
-						<img src={item.imgUrl} alt="" className={item.imgUrl==="" ? 'img_hide' : 'list_img'} />
+						<img src={item.imgUrl} alt="" className={item.imgUrl === "" ? 'img_hide' : 'list_img'} />
 					</ListImgLink>
 					<ListInfo>
 						<h3 className='list_title'>{item.title}</h3>
@@ -40,14 +41,17 @@ class List extends PureComponent {
 						</span>
 					</ListActionInfo>
 				</ListItem>
+
 			))
 		)
 	}
 
 	render() {
+		const { getMoreArticle, page } = this.props
 		return (
 			<Fragment>
 				{this.getListArea()}
+				<LoadMore onClick={ () => getMoreArticle(page) }>阅读更多</LoadMore>
 			</Fragment>
 		)
 	}
@@ -55,6 +59,15 @@ class List extends PureComponent {
 
 const mapState = (state) => ({
 	list: state.getIn(['home', 'articleList']),
+	page: state.getIn(['home', 'articlePage'])
 })
 
-export default connect(mapState, null)(List)
+const mapDispatch = (dispatch) => {
+	return {
+		getMoreArticle(page) {
+			dispatch(actionCreators.getMoreArticle(page))
+		}
+	}
+}
+
+export default connect(mapState, mapDispatch)(List)

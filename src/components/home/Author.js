@@ -9,7 +9,8 @@ import {
 	AuthorListItem,
 	Avatar,
 	UserName,
-	Follow
+	Follow,
+	AuthorMore
 } from '../../pages/home/style'
 
 function intlFormat(num) {
@@ -38,8 +39,8 @@ class Author extends PureComponent {
 						</Avatar>
 						<Follow className={newList[i].isFollow ? 'active' : ''} onClick={() => { handleChangeFollow(newList[i].isFollow, i) }}>
 							{/*{newList[i].attention?"已关注":"+关注"}*/}
-							{newList[i].isFollow ? <div className="content">已关注</div> : <div className="content">+关注</div>}
-							{newList[i].isFollow ? <div className="cancel">取消关注</div> : null}
+							{newList[i].isFollow ? <div className="content"><i className='iconfont'>&#xe614;</i>已关注</div> : <div className="content"><i className='iconfont'>&#xe625;</i>关注</div>}
+							{newList[i].isFollow ? <div className="cancel"><i className='iconfont'>&#xe617;</i>取消关注</div> : null}
 						</Follow>
 						<UserName>
 							{newList[i].userName}
@@ -64,6 +65,7 @@ class Author extends PureComponent {
 				<AuthorList>
 					{pageList}
 				</AuthorList>
+				<AuthorMore href="#">查看全部 ></AuthorMore>
 			</AuthorWrapper>
 		)
 	}
