@@ -21,7 +21,7 @@ export const WidthLimit = styled.div`
   position: relative;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   float: left;
   width: 100px;
   height: 56px;
@@ -40,11 +40,14 @@ export const Nav = styled.div`
 
 export const NavItem = styled.div`
   font-size: 17px;
-  margin-top: 9px;
-  margin-right: 50px;
+  margin-right: 10px;
+  padding: 0 15px;
   color: #333;
-  line-height: 38px;
+  line-height: 58px;
   box-sizing: border-box;
+  &:hover {
+    background: #f5f5f5;
+  }
   &.menu_left {
     float: left;
   }
@@ -53,6 +56,7 @@ export const NavItem = styled.div`
   }
   &.active {
     color: #ea6f5a;
+    background: none;
   }
   .iconfont {
     margin: 0 5px;

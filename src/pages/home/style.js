@@ -107,6 +107,12 @@ export const ListInfo = styled.div`
 			line-height: 24px;
 			color: #999;
 	}
+	a {
+		color: #333;
+	}
+	.list_title:hover {
+		text-decoration: underline;
+	}
 `
 export const ListActionInfo = styled.div`
 	padding: 0;
@@ -196,10 +202,12 @@ export const RecommendQRHover = styled.div`
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 		transition: all .15s linear;
+		visibility: hidden;
 		&.fade {
 			opacity: 0;
 		}
 		&.fade.in {
+			visibility: inherit;
 			opacity: 1;
 		}
 		&.hide {

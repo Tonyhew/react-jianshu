@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { ListItem, ListInfo, ListActionInfo, ListImgLink, LoadMore } from '../../pages/home/style';
 import { actionCreators } from '../../pages/home/store'
 import { connect } from 'react-redux';
@@ -16,11 +17,15 @@ class List extends PureComponent {
 		return (
 			newList.map((item, index) => (
 				<ListItem key={index} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
-					<ListImgLink className="img_right">
-						<img src={item.imgUrl} alt="" className={item.imgUrl === "" ? 'img_hide' : 'list_img'} />
-					</ListImgLink>
+					<Link to='/detail'>
+						<ListImgLink className="img_right">
+							<img src={item.imgUrl} alt="" className={item.imgUrl === "" ? 'img_hide' : 'list_img'} />
+						</ListImgLink>
+					</Link>
 					<ListInfo>
-						<h3 className='list_title'>{item.title}</h3>
+						<Link to='/detail'>
+							<h3 className='list_title'>{item.title}</h3>
+						</Link>
 						<p className='list_content'>{item.desc}</p>
 					</ListInfo>
 					<ListActionInfo>
@@ -51,7 +56,7 @@ class List extends PureComponent {
 		return (
 			<Fragment>
 				{this.getListArea()}
-				<LoadMore onClick={ () => getMoreArticle(page) }>阅读更多</LoadMore>
+				<LoadMore onClick={() => getMoreArticle(page)}>阅读更多</LoadMore>
 			</Fragment>
 		)
 	}

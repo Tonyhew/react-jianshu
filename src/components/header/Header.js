@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreators } from './store'
@@ -62,16 +63,20 @@ class Header extends PureComponent {
     return (
       <HeaderWrapper>
         <WidthLimit>
-          <Logo href='/' />
+          <Link to='/'>
+            <Logo />
+          </Link>
           <Nav>
-            <NavItem className='menu_left active'>
-              <i className='iconfont'>&#xe816;</i>
+            <Link to='/'>
+              <NavItem className='menu_left active'>
+                <i className='iconfont'>&#xe816;</i>
                 首页
               </NavItem>
+            </Link>
             <NavItem className='menu_left'>
               <i className='iconfont'>&#xe71c;</i>
                 下载App
-              </NavItem>
+            </NavItem>
 
             <SearchWrapper>
               <CSSTransition
