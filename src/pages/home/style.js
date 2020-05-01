@@ -75,7 +75,7 @@ export const ListItem = styled.div`
 	}
 `
 
-export const ListImgLink = styled.a`
+export const ListImgLink = styled.div`
 	position: absolute;
 	top: 50%;
 	right: 0;

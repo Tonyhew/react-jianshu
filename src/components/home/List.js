@@ -17,11 +17,13 @@ class List extends PureComponent {
 		return (
 			newList.map((item, index) => (
 				<ListItem key={index} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
-					<Link to='/detail'>
-						<ListImgLink className="img_right">
+
+					<ListImgLink className="img_right">
+						<Link to='/detail'>
 							<img src={item.imgUrl} alt="" className={item.imgUrl === "" ? 'img_hide' : 'list_img'} />
-						</ListImgLink>
-					</Link>
+						</Link>
+					</ListImgLink>
+
 					<ListInfo>
 						<Link to='/detail'>
 							<h3 className='list_title'>{item.title}</h3>
