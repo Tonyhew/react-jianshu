@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { actionCreators } from './store';
+// eslint-disable-next-line
 import { DetailWrapper, DetailContainer, DetailContentLeft, DetailContentRight, ArticleTitle, ArticleBody, ImgView, AdImg } from './style'
 
-class Detail extends Component {
+class Detail extends PureComponent {
+
+	componentDidMount() {
+		this.props.getDetail(this.props.match.params.id)
+	}
 
 	render() {
-		const { articleBody } = this.props
-		const newList = articleBody.toJS()
+		const { title, content } = this.props
 		return (
 			<DetailWrapper>
 				<DetailContainer>
 					<DetailContentLeft>
-						{
-							newList.map((item) => {
-								return (
-									<section className='article-content' key={item.id}>
-										<ArticleTitle>{item.title}</ArticleTitle>
-										<ArticleBody dangerouslySetInnerHTML={{__html: item.content}}></ArticleBody>
-									</section>
-								)
-							})
-						}
+
+						<section className='article-content'>
+							<ArticleTitle>{title}</ArticleTitle>
+							<ArticleBody dangerouslySetInnerHTML={{ __html: content }} />
+						</section>
+
 					</DetailContentLeft>
 					<DetailContentRight>
 						<aside>
@@ -37,7 +38,14 @@ class Detail extends Component {
 }
 
 const mapState = (state) => ({
-	articleBody: state.getIn(['detail', 'articleContent'])
+	title: state.getIn(['detail', 'title']),
+	content: state.getIn(['detail', 'content'])
 })
 
-export default connect(mapState, null)(Detail)
+const mapDispatch = (dispatch) => ({
+	getDetail(id) {
+		dispatch(actionCreators.getDetail(id))
+	}
+})
+
+export default connect(mapState, mapDispatch)(Detail)

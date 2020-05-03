@@ -19,13 +19,13 @@ class List extends PureComponent {
 				<ListItem key={index} id="list_wrapper" className={item.isHaveImg ? 'have_img' : ''}>
 
 					<ListImgLink className="img_right">
-						<Link to='/detail'>
+						<Link to={'/detail/' + item.id}>
 							<img src={item.imgUrl} alt="" className={item.imgUrl === "" ? 'img_hide' : 'list_img'} />
 						</Link>
 					</ListImgLink>
 
 					<ListInfo>
-						<Link to='/detail'>
+						<Link to={'/detail/' + item.id}>
 							<h3 className='list_title'>{item.title}</h3>
 						</Link>
 						<p className='list_content'>{item.desc}</p>
