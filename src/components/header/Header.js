@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { actionCreators } from './store'
+import { actionCreators } from './store';
+import { actionCreators as actionCreatorsLogin } from '../../pages/login/store'
 import {
   HeaderWrapper,
   WidthLimit,
@@ -23,6 +24,15 @@ import {
 } from './headerStyle';
 
 class Header extends PureComponent {
+
+  componentDidMount() {
+    if (localStorage.login === 'login') {
+      this.props.handleLogin();
+    } else if (localStorage.account === '' && localStorage.password === '') {
+      return <Redirect to='/login' />
+    }
+  }
+
   getListArea() {
     const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangeList } = this.props;
     const newList = list.toJS()
@@ -59,7 +69,7 @@ class Header extends PureComponent {
     }
   }
   render() {
-    const { focused, handleInputFocus, handleInputBlur, list } = this.props
+    const { focused, handleInputFocus, handleInputBlur, list, logOut } = this.props
     return (
       <HeaderWrapper>
         <WidthLimit>
@@ -103,7 +113,9 @@ class Header extends PureComponent {
                 写文章
             </Button>
             <Button className='reg'>注册</Button>
-            <ButtonLogin className='login'>登录</ButtonLogin>
+            {
+              this.props.login ? <ButtonLogin className='login' onClick={logOut}>退出</ButtonLogin> : <Link to='/login'><ButtonLogin className='login'>登录</ButtonLogin></Link>
+            }
             <ButtonLogin className='style'>
               <i className='iconfont'>&#xe636;</i>
             </ButtonLogin>
@@ -121,7 +133,8 @@ const mapStateToProps = (state) => {
     list: state.getIn(['header', 'list']),
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
-    mouseIn: state.getIn(['header', 'mouseIn'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    login: state.getIn(['login', 'login'])
   }
 }
 
@@ -155,7 +168,16 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreators.changePage(1))
       }
-    }
+    },
+    logOut() {
+      localStorage.login = 'logout';
+      localStorage.account = '';
+      localStorage.password = '';
+      dispatch(actionCreatorsLogin.logout());
+    },
+    handleLogin() {
+      dispatch(actionCreatorsLogin.login(localStorage.account, localStorage.password));
+    },
   }
 }
 

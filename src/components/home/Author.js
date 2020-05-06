@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import { actionCreators } from '../../pages/home/store'
 import {
 	AuthorWrapper,
@@ -25,7 +26,7 @@ function makeFriendly(num) {
 class Author extends PureComponent {
 
 	getAuthorArea() {
-		const { authorList, page, totalPage, handleChangeList, handleChangeFollow } = this.props;
+		const { authorList, page, totalPage, handleChangeList, handleChangeFollow, login, history } = this.props;
 		const newList = authorList.toJS()
 		const pageList = []
 
@@ -37,7 +38,7 @@ class Author extends PureComponent {
 						<Avatar>
 							<img src={newList[i].avatarUrl} alt="" />
 						</Avatar>
-						<Follow className={newList[i].isFollow ? 'active' : ''} onClick={() => { handleChangeFollow(newList[i].isFollow, i) }}>
+						<Follow className={newList[i].isFollow ? 'active' : ''} onClick={() => { handleChangeFollow(newList[i].isFollow, i, login, history) }}>
 							{/*{newList[i].attention?"已关注":"+关注"}*/}
 							{newList[i].isFollow ? <div className="content"><i className='iconfont'>&#xe614;</i>已关注</div> : <div className="content"><i className='iconfont'>&#xe625;</i>关注</div>}
 							{newList[i].isFollow ? <div className="cancel"><i className='iconfont'>&#xe617;</i>取消关注</div> : null}
@@ -83,6 +84,7 @@ const mapState = (state) => ({
 	authorList: state.getIn(['home', 'authorList']),
 	page: state.getIn(['home', 'page']),
 	totalPage: state.getIn(['home', 'totalPage']),
+	login:state.getIn(['login','login'])
 })
 
 const mapDispatch = (dispatch) => {
@@ -102,10 +104,14 @@ const mapDispatch = (dispatch) => {
 				dispatch(actionCreators.changePage(1))
 			}
 		},
-		handleChangeFollow(isFollow, index) {
+		handleChangeFollow(isFollow, index, login, history) {
+			if (!login) {
+				history.push('/login')
+				return
+			}
 			dispatch(actionCreators.handleChangeFollow(!isFollow, index))
 		}
 	}
 }
 
-export default connect(mapState, mapDispatch)(Author)
+export default withRouter(connect(mapState, mapDispatch)(Author))
