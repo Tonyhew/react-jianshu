@@ -116,7 +116,7 @@ class Header extends PureComponent {
             </Button>
             <Button className='reg'>注册</Button>
             {
-              this.props.login ? <ButtonLogin className='login' onClick={logOut}>退出</ButtonLogin> : <Link to='/login'><ButtonLogin className='login'>登录</ButtonLogin></Link>
+              this.props.login ? <ButtonLogin className='login' onClick={logOut}>退出</ButtonLogin> : <Link to='/login'><ButtonLogin className={`login ${current === '' ? '' : ''}`}>登录</ButtonLogin></Link>
             }
             <ButtonLogin className='style'>
               <i className='iconfont'>&#xe636;</i>
