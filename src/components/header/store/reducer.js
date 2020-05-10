@@ -6,7 +6,8 @@ const defaultState = fromJS({
 	mouseIn: false,
 	list: [],
 	page: 1,
-	totalPage: 1
+	totalPage: 1,
+	current: 'home'
 })
 export default (state = defaultState, action) => {
 	switch (action.type) {
@@ -14,6 +15,8 @@ export default (state = defaultState, action) => {
 			return state.set('focused', true)
 		case actionTypes.SEARCH_BLUR:
 			return state.set('focused', false)
+		case actionTypes.CHANGE_CURRENT_STYLE:
+			return state.set('current', action.current)	
 		case actionTypes.CHANGE_LIST:
 			return state.merge({
 				list: action.data,

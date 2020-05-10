@@ -24,6 +24,11 @@ export const mouseLeave = () => ({
   type: actionTypes.MOUSE_LEAVE
 })
 
+export const changeCurrent = (current) => ({
+  type: actionTypes.CHANGE_CURRENT_STYLE,
+  current: fromJS(current)
+})
+
 export const changePage = (page) => ({
   type: actionTypes.CHANGE_PAGE,
   page

@@ -8,6 +8,7 @@ import Header from './components/header/Header';
 import Home from './pages/home/Home';
 import Detail from './pages/detail/';
 import Login from './pages/login';
+import DownLoad from './pages/downLoad';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Header />
           <Route path='/' exact component={Home}></Route>
           <Route path='/login' exact component={Login}></Route>
+          <Route path='/downloadApp' exact component={DownLoad}></Route>
           <Route path='/detail/:id' exact component={Detail}></Route>
         </div>
       </BrowserRouter>

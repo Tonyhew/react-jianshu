@@ -69,7 +69,7 @@ class Header extends PureComponent {
     }
   }
   render() {
-    const { focused, handleInputFocus, handleInputBlur, list, logOut } = this.props
+    const { focused, handleInputFocus, handleInputBlur, list, logOut, current } = this.props
     return (
       <HeaderWrapper>
         <WidthLimit>
@@ -78,15 +78,17 @@ class Header extends PureComponent {
           </Link>
           <Nav>
             <Link to='/'>
-              <NavItem className='menu_left active'>
+              <NavItem className={`menu_left ${current === 'home' ? 'active' : ''}`}>
                 <i className='iconfont'>&#xe816;</i>
                 首页
               </NavItem>
             </Link>
-            <NavItem className='menu_left'>
-              <i className='iconfont'>&#xe71c;</i>
+            <Link to='/downloadApp'>
+              <NavItem className={`menu_left ${current === 'downLoad' ? 'active' : ''}`}>
+                <i className='iconfont'>&#xe71c;</i>
                 下载App
-            </NavItem>
+              </NavItem>
+            </Link>
 
             <SearchWrapper>
               <CSSTransition
@@ -134,7 +136,8 @@ const mapStateToProps = (state) => {
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
     mouseIn: state.getIn(['header', 'mouseIn']),
-    login: state.getIn(['login', 'login'])
+    current: state.getIn(['header', 'current']),
+    login: state.getIn(['login', 'login']),
   }
 }
 
