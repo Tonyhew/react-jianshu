@@ -6,14 +6,16 @@ import List from '../../components/home/List';
 import Author from '../../components/home/Author';
 import Recommend from '../../components/home/Recommend';
 import { actionCreators } from './store';
+import { actionCreators as headerCreators } from '../../components/header/store'
 import { BackTop } from './style'
 
 class Home extends PureComponent {
 
 	componentDidMount() {
-		const { changeHomeData } = this.props
+		const { changeHomeData, changeCurrentHome } = this.props
 		changeHomeData()
 		this.bindScroll()
+		changeCurrentHome()
 	}
 
 	componentWillUnmount() {
@@ -61,6 +63,9 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
+	changeCurrentHome() {
+		dispatch(headerCreators.changeCurrent('home'))
+	},
 	changeHomeData() {
 		dispatch(actionCreators.getHomeData())
 	},
